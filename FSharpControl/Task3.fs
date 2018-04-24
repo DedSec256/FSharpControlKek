@@ -5,7 +5,7 @@ module Task3  =
 
      (* Task 3 *)
     /// <summary>  
-    ///  Последовательность ячеек c приоритетом внутри очереди
+    ///  РџРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ СЏС‡РµРµРє c РїСЂРёРѕСЂРёС‚РµС‚РѕРј РІРЅСѓС‚СЂРё РѕС‡РµСЂРµРґРё
     /// </summary> 
     type Element<'a> = 
         | Element of 'a * int * Element<'a>
@@ -22,18 +22,18 @@ module Task3  =
                 | Empty -> None
     
     /// <summary>  
-    ///  FIFO - очередь 
+    ///  FIFO - РѕС‡РµСЂРµРґСЊ 
     /// </summary> 
     type PriorityQueue<'a>() = 
         let mutable start = Empty
         let mutable size = 0
         /// <summary>  
-        ///  Размер очереди
+        ///  Р Р°Р·РјРµСЂ РѕС‡РµСЂРµРґРё
         /// </summary> 
         member this.Size
             with get() = size
         /// <summary>  
-        ///  Пуста ли очередь
+        ///  РџСѓСЃС‚Р° Р»Рё РѕС‡РµСЂРµРґСЊ
         /// </summary> 
         member this.IsEmpty() = 
             start = Empty
@@ -41,10 +41,10 @@ module Task3  =
             start.ToString()
 
         /// <summary>  
-        ///  Добавить элемент в очередь. 
-        ///  С текучим синтаксисом .Enqueue(10, 1).Enqueue(20, 2)
-        /// <param name="item">Добавляемый элемент</param>
-        /// <param name="priority">Приоритет элемента</param>
+        ///  Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РѕС‡РµСЂРµРґСЊ. 
+        ///  РЎ С‚РµРєСѓС‡РёРј СЃРёРЅС‚Р°РєСЃРёСЃРѕРј .Enqueue(10, 1).Enqueue(20, 2)
+        /// <param name="item">Р”РѕР±Р°РІР»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚</param>
+        /// <param name="priority">РџСЂРёРѕСЂРёС‚РµС‚ СЌР»РµРјРµРЅС‚Р°</param>
         /// </summary> 
         member this.Enqueue (item, priority) = 
             let rec recEnqueue data node =
@@ -66,12 +66,12 @@ module Task3  =
             this
 
         /// <summary>  
-        ///  Получить первого в очереди и удалить его из неё
+        ///  РџРѕР»СѓС‡РёС‚СЊ РїРµСЂРІРѕРіРѕ РІ РѕС‡РµСЂРµРґРё Рё СѓРґР°Р»РёС‚СЊ РµРіРѕ РёР· РЅРµС‘
         /// </summary> 
         member this.Dequeue() = 
             let getStart() = 
                 match start with
-                | Empty -> raise (InvalidOperationException("Очередь пуста"))
+                | Empty -> raise (InvalidOperationException("РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°"))
                 | Element(x, p, n) -> (x, n)
 
             let (data, newStart) = getStart()
@@ -80,9 +80,9 @@ module Task3  =
             data
 
         /// <summary>  
-        ///  Получить первого в очереди без удаления
+        ///  РџРѕР»СѓС‡РёС‚СЊ РїРµСЂРІРѕРіРѕ РІ РѕС‡РµСЂРµРґРё Р±РµР· СѓРґР°Р»РµРЅРёСЏ
         /// </summary>
         member this.First() = 
             match start with
-            | Empty -> raise (InvalidOperationException("Очередь пуста"))
+            | Empty -> raise (InvalidOperationException("РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°"))
             | Element(x, p, n) -> x
