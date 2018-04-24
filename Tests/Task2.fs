@@ -26,12 +26,14 @@ type Task2TestClass () =
         let res = printKek 3;
 
         Assert.AreEqual("***\n* *\n***", res)
+        Assert.AreEqual("***\n* *\n***", printKekFinal 3) //тест новой версии после кр
 
     [<TestMethod>]
     member this.Second1 () =
         let res = printKek 4;
 
         Assert.AreEqual("****\n*  *\n*  *\n****", res)
+        Assert.AreEqual("****\n*  *\n*  *\n****", printKekFinal 4) //тест новой версии после кр
 
     [<TestMethod>]
     member this.Second11 () =
@@ -42,12 +44,18 @@ type Task2TestClass () =
                         "*   *\n" +
                         "*   *\n" +
                         "*****", res)
+        Assert.AreEqual("*****\n" +
+                        "*   *\n" +
+                        "*   *\n" +
+                        "*   *\n" +
+                        "*****", printKekFinal 5) //тест новой версии после кр
 
     [<TestMethod>]
     member this.Second2 () =
         let res = printKek 1;
 
         Assert.AreEqual("*", res)
+        Assert.AreEqual("*", printKekFinal 1) //тест версии после кр
 
     [<TestMethod>]
     member this.Second3 () =
