@@ -44,3 +44,13 @@ module Task2  =
             | _ -> printKekRec(x + 1, y, buffer + if (y = 1 || y = size) then "*" else " ")
 
         printKekRec(1, 1, "")
+
+    /// Быстрый способ (просто так). 
+    let printKekFast size =
+
+        if size <= 0 then raise(ArgumentException("WTF?"))
+
+        let startEnd = String.Concat(String.replicate(size) "*", "\n")
+        let center = String.Concat("*", String.replicate(size - 2) " ", "*\n")
+
+        String.Concat(startEnd, String.replicate(size - 2) center, startEnd)
