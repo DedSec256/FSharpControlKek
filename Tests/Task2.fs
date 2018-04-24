@@ -37,7 +37,11 @@ type Task2TestClass () =
     member this.Second11 () =
         let res = printKek 5;
 
-        Assert.AreEqual("*****\n*   *\n*   *\n*   *\n*****", res)
+        Assert.AreEqual("*****\n" +
+                        "*   *\n" +
+                        "*   *\n" +
+                        "*   *\n" +
+                        "*****", res)
 
     [<TestMethod>]
     member this.Second2 () =
