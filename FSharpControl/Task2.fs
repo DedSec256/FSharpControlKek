@@ -45,29 +45,3 @@ module Task2  =
             | _ -> printKekRec(x + 1, y, buffer + if (y = 1 || y = size) then "*" else " ")
 
         printKekRec(1, 1, "")
-
-    /// Быстрый способ (просто так). 
-    let printKekFast size =
-
-        if size <= 0 then raise(ArgumentException("WTF?"))
-        elif size = 1 then "*"
-        else 
-            let startEnd = String.Concat(String.replicate(size) "*", "\n")
-            let center = String.Concat("*", String.replicate(size - 2) " ", "*\n")
-
-            String.Concat(startEnd, String.replicate(size - 2) center, startEnd)
-
-    /// Быстрый способ 2 (просто так). 
-    let printKekFast2 size =
-
-        if size <= 0 then raise(ArgumentException("WTF?"))
-        elif size = 1 then "*"
-        else 
-            let builder = StringBuilder(size * size)
-            builder.Append('*', size).Append('\n') |> ignore
-
-            for i in [1..size - 2] do 
-                builder.Append('*').Append(' ', size - 2).Append("*\n") |> ignore
-
-            builder.Append('*', size) |> ignore
-            builder.ToString()
