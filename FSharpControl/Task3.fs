@@ -15,6 +15,11 @@ module Task3  =
                 match this with
                 | Element(x, p, n) -> x.ToString() + " <- " + n.ToString()
                 | Empty -> "(null)"
+
+            member this.GetValue() = 
+                match this with 
+                | Element(x, p, n) -> Some(x)
+                | Empty -> None
     
     /// <summary>  
     ///  FIFO - очередь 
@@ -39,6 +44,7 @@ module Task3  =
         ///  Добавить элемент в очередь. 
         ///  С текучим синтаксисом .Enqueue(10, 1).Enqueue(20, 2)
         /// <param name="item">Добавляемый элемент</param>
+        /// <param name="priority">Приоритет элемента</param>
         /// </summary> 
         member this.Enqueue (item, priority) = 
             let rec recEnqueue data node =

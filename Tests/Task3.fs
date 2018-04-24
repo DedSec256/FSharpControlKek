@@ -30,6 +30,11 @@ type Task3TestClass () =
 
         Assert.AreEqual("9 <- 9 <- 1 <- 1 <- (null)", queue.ToString())
         Assert.AreEqual(4, queue.Size)
+        
+        queue.Enqueue(0, 100)
+        Assert.AreEqual("0 <- 9 <- 9 <- 1 <- 1 <- (null)", queue.ToString())
+
+
 
     [<TestMethod>]
     member this.MustThrow () = 
@@ -52,3 +57,10 @@ type Task3TestClass () =
         queue.Dequeue()
         queue.Dequeue()
         Assert.AreEqual(0, queue.Size)
+
+    [<TestMethod>]
+    member this.PeekTest () = 
+        let queue = PriorityQueue<int>()
+        queue.Enqueue(1, 1).Enqueue(2, 2).Enqueue(3, 3).Enqueue(2, 2) |> ignore
+
+        Assert.AreEqual(3, queue.First())
