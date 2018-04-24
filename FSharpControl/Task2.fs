@@ -37,16 +37,10 @@ module Task2  =
         if size <= 0 then raise(ArgumentException("WTF?"))
 
         let rec printKekRec(x, y, buffer) =
-            match y with
-            | y when (y = size || y = 1) ->
-                match x with
-                | x when (x <> size) -> printKekRec(x + 1, y, buffer + "*")
-                | x when (x = size && x = y) -> buffer + "*"
-                | _ -> printKekRec(1, y + 1, buffer + "*\n")
-            | _ ->
-                match x with 
-                | x when (x = 1) -> printKekRec(x + 1, y, buffer + "*")
-                | x when (x = size) -> printKekRec(1, y + 1, buffer + "*\n")
-                | _ -> printKekRec(x + 1, y, buffer + " ")
+            match x with
+            | x when (x = size && y = size) -> buffer + "*"
+            | x when (x = 1) -> printKekRec(x + 1, y, buffer + "*")
+            | x when (x = size) -> printKekRec(1, y + 1, buffer + "*\n")
+            | _ -> printKekRec(x + 1, y, buffer + if (y = 1 || y = size) then "*" else " ")
 
         printKekRec(1, 1, "")
