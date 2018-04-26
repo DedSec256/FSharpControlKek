@@ -61,8 +61,8 @@ module Task3  =
                             | _ -> Element(x, p, Element(item, priority, n))
                     | _ -> Element(item, priority, node) 
                    
-            size <- size + 1
             start <- recEnqueue item start
+            size <- size + 1
             this
 
         /// <summary>  
