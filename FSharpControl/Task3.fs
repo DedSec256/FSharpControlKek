@@ -44,7 +44,7 @@ module Task3  =
         ///  Добавить элемент в очередь. 
         ///  С текучим синтаксисом .Enqueue(10, 1).Enqueue(20, 2)
         /// <param name="item">Добавляемый элемент</param>
-        /// <param name="priority">Приоритет элемента</param>
+        /// <param name="priority">Приоритет элемента (большее число соответствует большему приоритету)</param>
         /// </summary> 
         member this.Enqueue (item, priority) = 
             let rec recEnqueue data node =
